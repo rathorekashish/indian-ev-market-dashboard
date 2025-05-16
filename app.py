@@ -12,6 +12,8 @@ st.markdown("A data-driven overview of India's Electric Vehicle market using key
 # Load datasets
 market_df = pd.read_csv("ev_market_overview_2024.csv")
 penetration_df = pd.read_csv("ev_penetration_fy2023_24.csv")
+penetration_df.columns = penetration_df.columns.str.strip()  
+
 oem_df = pd.read_csv("top_ev_oems_2024.csv")
 
 # Section 1: Market Overview
