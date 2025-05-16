@@ -12,6 +12,8 @@ st.markdown("A data-driven overview of India's Electric Vehicle market using key
 # Load datasets
 market_df = pd.read_csv("ev_market_overview_2024.csv")
 penetration_df = pd.read_csv("ev_penetration_fy2023_24.csv")
+st.write("CHECK THESE COLUMN NAMES:", penetration_df.columns.tolist())
+
 penetration_df.columns = penetration_df.columns.str.strip()  
 
 oem_df = pd.read_csv("top_ev_oems_2024.csv")
@@ -32,7 +34,7 @@ with col2:
 
 # Section 2: Penetration by Segment
 st.header("🚗 EV Penetration by Segment (FY 2023–24)")
-fig3 = px.bar(penetration_df, x="Segment", y="Penetration (%)", color="Segment",
+fig3 = px.bar(penetration_df, x="Segment", y="Penetration %", color="Segment")
               title="EV Penetration by Vehicle Type", text="Penetration (%)")
 st.plotly_chart(fig3, use_container_width=True)
 
