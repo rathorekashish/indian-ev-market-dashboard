@@ -12,10 +12,11 @@ st.markdown("A data-driven overview of India's Electric Vehicle market using key
 # Load datasets
 market_df = pd.read_csv("ev_market_overview_2024.csv")
 penetration_df = pd.read_csv("ev_penetration_fy2023_24.csv")
-oem_df = pd.read_csv("top_ev_oems_2024.csv")
+oem_df = pd.read_csv("top_oem_2024.csv")
 
-# Clean column headers
+# Clean column names
 penetration_df.columns = penetration_df.columns.str.strip()
+oem_df.columns = oem_df.columns.str.strip()
 
 # Section 1: Market Overview
 st.header("📈 Overall EV Market Overview")
@@ -36,11 +37,12 @@ st.header("🚗 EV Penetration by Segment (FY 2023–24)")
 fig3 = px.bar(
     penetration_df,
     x="Segment",
-    y="Penetration %",
+    y="Penetration (%)",  # Make sure this matches the exact column in CSV
     color="Segment",
+    text="Penetration (%)",
     title="EV Penetration by Vehicle Type"
 )
-st.plotly_chart(fig3)
+st.plotly_chart(fig3, use_container_width=True)
 
 # Section 3: Top OEMs
 st.header("🏭 Top Electric Two-Wheeler OEMs in 2024")
@@ -50,4 +52,5 @@ st.plotly_chart(fig4, use_container_width=True)
 # Footer
 st.markdown("---")
 st.caption("📊 Data visualized with Streamlit and Plotly | Project by [Your Name]")
+
 
